@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Playing</title>
+</head>
+<body>
+    <h1>Playing</h1>
+    <button id="pauseButton">Pause</button>
+    <button id="unpauseButton">Play</button>
+    <button id="homeButton">Home</button>
+
+    <script>
+        document.getElementById('pauseButton').onclick = function() {
+            fetch('/pause', { method: 'POST' });
+        };
+
+        document.getElementById('unpauseButton').onclick = function() {
+            fetch('/unpause', { method: 'POST' });
+        };
+
+        document.getElementById('homeButton').onclick = function() {
+            fetch('/stop', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/';
+                    }
+                });
+        };
+    </script>
+</body>
+</html>
